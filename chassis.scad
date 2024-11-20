@@ -153,9 +153,9 @@ union() {
         /* microUSB cutout */
         translate([
             -SIDE/2 + 1, // move to the edge but out of the wall
-            -SIDE/2+OUTER_WALL+ 11 - 1.6, // leave room for the buzzer and display
-            -HEIGHT/2 + OUTER_WALL + OUTER_FILLET_OFFSET + 4
-        ]) cuboid([10, 4, 9], fillet=1);
+            -SIDE/2+OUTER_WALL+ 11 - 1.6,
+            -HEIGHT/2 + OUTER_WALL + OUTER_FILLET_OFFSET + 4.5
+        ]) cuboid([10, 4, 10], fillet=1);
 
         translate([
             0, // leave the display centered
