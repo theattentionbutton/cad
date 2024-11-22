@@ -36,7 +36,7 @@ module retainer_wall(height=15, gap=2.2, depth=5) {
 module speaker_holder() {
     union() {
         difference() {
-            rotate([0, 0, -90]) tube(h=11, ir=6, wall=2, orient=ORIENT_X, align=ALIGN_POS);
+            rotate([0, 0, -90]) tube(h=11, ir=6, wall=1.5, orient=ORIENT_X, align=ALIGN_POS);
             translate([0, -11/2, 4]) cuboid([18, 12, 8]);
         }
 
@@ -111,7 +111,6 @@ module grille(r = 6, width = 1, spacing = 1, vertical=false) {
     d = r * 2;
     m = width + spacing;
     n = round(d / m);
-    echo(n);
     lengths = quicksort([
         for (i=[floor(n/2)*m:m:n*m]) 
             if (i != r) sqrt(abs(r^2 - i^2))
@@ -121,14 +120,17 @@ module grille(r = 6, width = 1, spacing = 1, vertical=false) {
     union() {
         for(i=[0:n]) {
             idx = i == n/2 ? n/2 - 1 : (i > n/2) ? n - i : i;
-            echo(i, idx);
             translate([0, (i - initial) * m]) rounded_rect([lengths[idx] + 1, width], center=true);
         }
     }
 }
 
 module speaker_grille() {
-    rotate([90, 0, 0]) linear_extrude(5) grille();
+    difference() {
+        rotate([90, 0, 0]) linear_extrude(5) grille();
+/*         translate([0, -2, 11]) cuboid([10, 4, 2]);
+        translate([0, -2, -2]) cuboid([10, 4, 2]); */
+    }
 }
 
 union() {
