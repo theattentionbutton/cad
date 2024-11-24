@@ -1,6 +1,7 @@
 include <MCAD/utilities.scad>
 include <BOSL/shapes.scad>
 include <BOSL/sliders.scad>
+include <nutsnbolts/cyl_head_bolt.scad>;
 
 $fa=2;
 $fs=0.2;
@@ -19,7 +20,6 @@ module nub() {
 
 module exterior(dim=[SIDE, SIDE, HEIGHT], fillet=4, wall=OUTER_WALL) {
     difference() {
-
         union() {
             cuboid(dim, fillet=fillet, edges=EDGES_ALL-EDGES_X_TOP - EDGES_Y_TOP - EDGES_X_BOT - EDGES_Y_BOT);
             flange_height = 8;
@@ -40,10 +40,30 @@ module exterior(dim=[SIDE, SIDE, HEIGHT], fillet=4, wall=OUTER_WALL) {
             translate([-nub_x, 0, nub_y]) rotate(180) nub();
         }
 
-        translate([0, 0, -4]) linear_extrude(8) circle(16);
+        translate([3, 0, -4]) linear_extrude(8) difference() {
+            circle(16);
+            translate([0, -(16 + 9.4/2 - 9.2)]) square([32, 10.5], center=true);
+        }
     }
 }
 
+module screwposts() difference() {
+    x = 18;
+    y = 4;
+    z = 8;
+    cuboid([20, y, z]);
+    translate([-0.5, 0]) cuboid([10, y + 1, z + 1]);
+    translate([10, 0]) cuboid([3, y + 1, z + 1]);
+    translate([-11, 0]) cuboid([3, y + 1, z + 1]);
+    translate([0, -3.5]) cuboid([20, y, z + 1]);
+    translate([x/2 - 2.5, 0.2, z/2 + 4.5]) {
+        translate([0, 0]) screw("M2.5x8");
+        translate([-14, 0]) screw("M2.5x8");
+    }
+}
+
+
 union() {
     exterior();
+    translate([3, -8.3, 4]) screwposts();
 }
