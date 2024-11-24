@@ -57,7 +57,7 @@ module interior() {
     ]) rotate([0, 0, -90]) retainer_wall();
 
     translate([
-        0, 
+        1.5, 
         -SIDE/2 + OUTER_WALL + 10, 
         -HEIGHT/2 
             + OUTER_WALL 
@@ -127,9 +127,7 @@ module grille(r = 6, width = 1, spacing = 1, vertical=false) {
 
 module speaker_grille() {
     difference() {
-        rotate([90, 0, 0]) linear_extrude(5) grille();
-/*         translate([0, -2, 11]) cuboid([10, 4, 2]);
-        translate([0, -2, -2]) cuboid([10, 4, 2]); */
+        rotate([90, 0, 0]) linear_extrude(5) scale([0.85, 0.75]) grille();
     }
 }
 
@@ -143,7 +141,7 @@ union() {
         
         /* speaker grille */
         translate([
-                0, 
+                0.5, 
                 -SIDE/2 + OUTER_WALL + 1, 
                 -HEIGHT/2 
                     + OUTER_WALL 
@@ -156,7 +154,7 @@ union() {
         translate([
             -SIDE/2 + 1, // move to the edge but out of the wall
             -SIDE/2+OUTER_WALL+ 11 - 1.6,
-            -HEIGHT/2 + OUTER_WALL + OUTER_FILLET_OFFSET + 4.5
+            -HEIGHT/2 + OUTER_WALL + OUTER_FILLET_OFFSET + 4
         ]) cuboid([10, 4, 10], fillet=1);
 
         translate([
