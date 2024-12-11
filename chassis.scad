@@ -160,7 +160,7 @@ union() {
         translate([
             0, // leave the display centered
             -SIDE/2+OUTER_WALL, // move to the box wall
-            HEIGHT/2 - 16 - 12, // HEIGHT/2 - 16 moves it to the top edge. then -12 brings it down 12mm corresponding to the pcb 
+            HEIGHT/2 - 16 - 12 - 1, // HEIGHT/2 - 16 moves it to the top edge. then -12 brings it down 12mm corresponding to the pcb 
         ]) cuboid([34, 10, 35]);
     }
 
