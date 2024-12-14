@@ -59,31 +59,4 @@ module knob(height = 16, radius = 18, wall = 2) {
 }
 
 // knob(wall = 1.5, radius=18);
-knob(wall=1.5, radius=18, height=18);
-
-/*
-module logo() {
-    pixels = [
-        0, 0, 0, 0, 0, 0, 0, 0,
-        0, 1, 1, 0, 0, 1, 1, 0,
-        1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1,
-        0, 1, 1, 1, 1, 1, 1, 0,
-        0, 0, 1, 1, 1, 1, 0, 0,
-        0, 0, 0, 1, 1, 0, 0, 0
-    ];
-    translate([2, 2, 0]) for (i = [0:len(pixels) - 1]) {
-        pixel = pixels[i];
-        
-        x= i % 8;
-        y = floor(i / 8);
-
-        translate([x / 8 * 32, y / 8 * 32, 2])  if (pixel) {
-            sphere(1.5);
-        }
-        else {
-        }
-    }
-}
-*/
+knob(wall=1.5, radius=18, height=18.5);
