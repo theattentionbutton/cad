@@ -59,4 +59,4 @@ module knob(height = 16, radius = 18, wall = 2) {
 }
 
 // knob(wall = 1.5, radius=18);
-knob(wall=1.5, radius=18, height=18.5);
+knob(wall=1.5, radius=18, height=16);
