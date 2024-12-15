@@ -38,27 +38,12 @@ module exterior(dim=[SIDE, SIDE, HEIGHT], fillet=4, wall=OUTER_WALL) {
             // -0.5 gives 46.5
             // -0 gives 47
             outer_side = SIDE - fillet/2 - wall;
-            
-            /* delete from here to remove flanges */
-            translate([0, 0, 4]) difference() {
-                cuboid([outer_side - 2, outer_side - 2, flange_height], fillet=fillet, edges=EDGES_Z_ALL);
-                cuboid([outer_side - wall - 5,  outer_side - wall - 5, flange_height+1], fillet=fillet, edges=EDGES_Z_ALL);
-                cuboid([outer_side - 15, outer_side, flange_height+1]);
-            }
-
-
-            nub_x = SIDE/2 - OUTER_WALL - 2.8;
-            nub_y = 5;
-
-            translate([nub_x, 0, nub_y]) nub(); 
-            translate([-nub_x, 0, nub_y]) rotate(180) nub();
-            /* delete upto here to remove flanges */
         }
-
-        translate([3, 0, -4]) linear_extrude(8) difference() {
-            circle(16);
-            translate([0, -(16 + 9.4/2 - 9.2)]) square([32, 10.5], center=true);
-        }
+        translate([-8,-5,-2]) linear_extrude(6) square(36);
+        
+        translate([-8,-32,-2]) linear_extrude(6) square([36, 20]);
+        
+        translate([-39,-32,-2]) linear_extrude(6) square([20, 72]);
     }
 }
 
@@ -76,9 +61,11 @@ module screwposts() difference() {
     }
 }
 
-
-union() {
-    exterior();
-    translate([-13.2,0,3]) rotate([0, 0, 90]) rail(depth=8);
-    translate([3, -8.3, 4]) screwposts();
+difference() {
+    union() {
+        exterior();
+        translate([-13.2,0,3]) rotate([0, 0, 90]) rail(depth=8);
+        translate([3, -8.3, 4]) screwposts();
+    }
+    translate([-32,-10,-2]) #linear_extrude(6) square([20, 20]);
 }
