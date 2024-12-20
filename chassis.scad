@@ -20,9 +20,9 @@ module exterior(dim=[SIDE, SIDE, HEIGHT], fillet=4, wall=OUTER_WALL) {
 module rail(height=72, gap=2.2, depth=5) {
     difference() {
         cuboid([6, 6, height]);
-        translate([0, 2]) cuboid([gap, 5, height + 0.2]);
-        translate([0, -2]) cuboid([8, 3, height]);
+        translate([0, 1]) #cuboid([gap, 5.5, height + 0.2]);
     }
+    
 }
 
 module retainer_wall(height=15, gap=2.2, depth=5) {
