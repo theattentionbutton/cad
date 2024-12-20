@@ -40,7 +40,10 @@ module speaker_holder() {
             translate([0, -11/2, 4]) cuboid([18, 12, 8]);
         }
 
-        translate([0, -11/2, -10]) cuboid([3, 11, 6]);
+        difference() {
+            translate([0, -11/2, -6]) #cuboid([15, 11, 12]);
+            rotate([0, 0, -90]) cyl(h=11, r=6, wall=1.5, orient=ORIENT_X, align=ALIGN_POS);
+        }
     }
 }
 
