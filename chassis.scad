@@ -42,7 +42,7 @@ module speaker_holder() {
 
         difference() {
             translate([0, -11/2, -6]) #cuboid([15, 11, 12]);
-            rotate([0, 0, -90]) cyl(h=11, r=6, wall=1.5, orient=ORIENT_X, align=ALIGN_POS);
+            rotate([0, 0, -90]) cyl(h=11, r=6, orient=ORIENT_X, align=ALIGN_POS);
         }
     }
 }
