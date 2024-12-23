@@ -169,7 +169,7 @@ union() {
         translate([
             -SIDE/2 + 1, // move to the edge but out of the wall
             -SIDE/2+OUTER_WALL+ 11 - 1.6 - 1,
-            -HEIGHT/2 + OUTER_WALL + OUTER_FILLET_OFFSET + 4
+            -HEIGHT/2 + OUTER_WALL + OUTER_FILLET_OFFSET + 4.65
         ]) cuboid([10, 4, 10], fillet=1);
 
         translate([
