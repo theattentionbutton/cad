@@ -80,5 +80,4 @@ module screwposts() difference() {
 union() {
     exterior();
     translate([-13.2,0,3]) rotate([0, 0, 90]) rail(depth=8);
-    translate([3, -8.3, 4]) screwposts();
 }
