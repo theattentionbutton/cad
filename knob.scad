@@ -48,6 +48,7 @@ module ridges(height = 14, depth = 0.4, count = 100, pos = [0, 17, 1]) {
     for (i=[1:1:count]) {
         rotate([0, 0, i * 360/count]) translate(pos) cyl(height, depth);
     }
+
 }
 
 module knob(height = 16, radius = 18, wall = 2) { 
@@ -59,4 +60,4 @@ module knob(height = 16, radius = 18, wall = 2) {
 }
 
 // knob(wall = 1.5, radius=18);
-knob(wall=1.5, radius=18, height=16);
+knob(wall=1.5, radius=18, height=15.8);
