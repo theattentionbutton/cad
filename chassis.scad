@@ -1,6 +1,6 @@
-include <MCAD/utilities.scad>
-include <BOSL/shapes.scad>
-include <BOSL/sliders.scad>
+include <MCAD/utilities.scad>;
+include <BOSL/shapes.scad>;
+include <BOSL/sliders.scad>;
 
 $fa=2;
 $fs=0.2;
@@ -17,18 +17,24 @@ module exterior(dim=[SIDE, SIDE, HEIGHT], fillet=4, wall=OUTER_WALL) {
     }
 }
 
+module encoder_support() {
+    d = 14;
+    difference() {
+        cylinder(h=67,d=d);
+        translate([0, 0, HEIGHT-11]) #cylinder(h=4,d=d-2);
+    }
+}
+
 module rail(height=72, gap=2.2, depth=5) {
     difference() {
         cuboid([6, 6, height]);
-        translate([0, 1]) #cuboid([gap, 5.5, height + 0.2]);
+        translate([0, 1]) cuboid([gap, 5.5, height + 0.2]);
     }
     
 }
 
 module retainer_wall(height=15, gap=2.2, depth=5) {
-    difference() {
-        translate([-2.5, 6]) cuboid([2, 15, height]);
-    }
+    translate([-2.5, 6]) cuboid([2, 15, height]);
 }
 
 
@@ -58,6 +64,12 @@ module interior() {
         -SIDE/2+OUTER_WALL+11, /* leave room for the buzzer and display */
         -HEIGHT/2+OUTER_WALL+5
     ]) rotate([0, 0, -90]) retainer_wall();
+    
+        translate([
+        0, /* move the rail to the edge but out of the wall */
+        8.6, /* leave room for the buzzer and display */
+        -HEIGHT/2
+    ]) rotate([0, 0, -90]) encoder_support();
 
     translate([
         1.5, 
